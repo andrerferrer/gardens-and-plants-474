@@ -10,7 +10,6 @@
 
 <div class="container my-3">
   <div class="cards">
-  
     <% plants = @garden.plants %>
     <% plants.each do |plant| %>
       <div class="card-category" 
@@ -31,4 +30,17 @@
     <% end %>
   </div>
   
+  <br>
+
+  <div class="w-50 m-auto">
+    <h2>Create a new Plant</h2>
+    <%= simple_form_for [@garden, @empty_plant] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :picture_url %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
 </div>
+
+
