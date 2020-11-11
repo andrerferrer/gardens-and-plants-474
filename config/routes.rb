@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # code in silo -> one feature at a time
+  root to: 'gardens#index'
+  # resources :gardens, only: [:index]
 end
