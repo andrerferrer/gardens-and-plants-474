@@ -15,6 +15,17 @@
     <% plants.each do |plant| %>
       <div class="card-category" 
            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.picture_url  %>);" >
+        <%# way number 1 %>
+        <%# <%= link_to plant_path(plant.id), method: :delete, data: {confirm: 'Are you sure?'} do %> 
+          <%# <i class="far fa-times-circle"></i> %>
+        <%# <% end %>         
+
+        <%# way number 2 %>
+        <%= link_to "<i class='far fa-times-circle'></i>".html_safe, 
+                    plant_path(plant.id), 
+                    method: :delete, 
+                    data: {confirm: 'Are you sure?'} %>   
+        
         <%= plant.name %>
       </div>
     <% end %>
