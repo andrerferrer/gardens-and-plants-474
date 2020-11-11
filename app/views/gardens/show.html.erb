@@ -8,41 +8,39 @@
 </div>
 
 
-<div class="container my-3">
-  <div class="cards">
-    <% plants = @garden.plants %>
-    <% plants.each do |plant| %>
-      <div class="card-category" 
-           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.picture_url  %>);" >
-        <%# way number 1 %>
-        <%# <%= link_to plant_path(plant.id), method: :delete, data: {confirm: 'Are you sure?'} do %> 
-          <%# <i class="far fa-times-circle"></i> %>
-        <%# <% end %>         
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <div class="cards">
+        <% @garden.plants.each do |plant| %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plant.picture_url %>)">
+            <%= plant.name %>
+            <%= link_to plant_path(plant), method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-remove-link' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
 
-        <%# way number 2 %>
-        <%= link_to "<i class='far fa-times-circle'></i>".html_safe, 
-                    plant_path(plant.id), 
-                    method: :delete, 
-                    data: {confirm: 'Are you sure?'} %>   
-        
-        <%= plant.name %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  
-  <br>
+    </div>
 
-  <div class="w-50 m-auto">
-    <h2>Create a new Plant</h2>
-    <%# This is needed to move the screen back to the form when the validation fails %>
-    <%# url: garden_plants_path(@garden.id, anchor: 'new_plant') %>
-    <%= simple_form_for [@garden, @plant], url: garden_plants_path(@garden.id, anchor: 'new_plant') do |f| %>
-      <%= f.input :name %>
-      <%= f.input :picture_url %>
-      <%= f.submit %>
-    <% end %>
   </div>
-
 </div>
+  
+<!-- form -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <h4>Add a new plant</h4>
 
+      <%# This is needed to move the screen back to the form when the validation fails %>
+      <%= simple_form_for [@garden, @plant], url: garden_plants_path(@garden.id, anchor: 'new_plant') do |f| %>
+      <%# simple_form_for([@garden, @plant]) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :picture_url %>
+        <%= f.submit 'Save your plant', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
