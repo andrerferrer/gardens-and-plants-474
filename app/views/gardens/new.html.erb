@@ -1,0 +1,25 @@
+<div class="container">
+    <%= simple_form_for @garden do |f| %>
+        <%= f.input :name %>
+        <%= f.input :banner_url %>
+        <%= f.submit %>
+    <% end %>
+</div>
+
+<%# <form class="simple_form new_garden" id="new_garden" novalidate="novalidate" 
+      action="/gardens" accept-charset="UTF-8" 
+      method="post">
+      
+    <div class="form-group string required garden_name">
+        <label class="string required" for="garden_name">Name <abbr title="required">*</abbr></label>
+        <input class="form-control string required" type="text" name="garden[name]" id="garden_name">
+    
+    </div>
+    
+    <div class="form-group url optional garden_banner_url">
+        <label class="url optional" for="garden_banner_url">Banner url</label>
+        <input class="form-control string url optional" type="url" name="garden[banner_url]" id="garden_banner_url">
+    </div>
+
+    <input type="submit" name="commit" value="Create Garden" data-disable-with="Create Garden">
+</form> %>

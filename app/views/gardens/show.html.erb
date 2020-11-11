@@ -34,7 +34,9 @@
 
   <div class="w-50 m-auto">
     <h2>Create a new Plant</h2>
-    <%= simple_form_for [@garden, @empty_plant] do |f| %>
+    <%# This is needed to move the screen back to the form when the validation fails %>
+    <%# url: garden_plants_path(@garden.id, anchor: 'new_plant') %>
+    <%= simple_form_for [@garden, @plant], url: garden_plants_path(@garden.id, anchor: 'new_plant') do |f| %>
       <%= f.input :name %>
       <%= f.input :picture_url %>
       <%= f.submit %>

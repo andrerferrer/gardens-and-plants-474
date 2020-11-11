@@ -3,11 +3,14 @@ class PlantsController < ApplicationController
         @plant = Plant.new(strong_params)
 
         # find the garden and associate it to the plant
-        garden = Garden.find(params[:garden_id])
-        @plant.garden = garden
+        @garden = Garden.find(params[:garden_id])
+        @plant.garden = @garden
 
-        @plant.save!
-        redirect_to garden_path(@plant.garden.id)
+        if @plant.save
+            redirect_to garden_path(@plant.garden.id)
+        else
+            render "gardens/show"
+        end
     end
     
     def destroy
